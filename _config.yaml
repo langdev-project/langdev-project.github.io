@@ -1,0 +1,24 @@
+title         : "The LANGDEV Project Blog"
+url           : "http://langdev.xyz"
+author        : "The LANGDEV Project"
+blog_url      : "/blog"
+description   : "Home to various fictional languages"
+lang          : "en"
+permalink     : "/blog/:categories/:title-0:year:month:day.html"
+paginate      : 7
+paginate_path : "/blog/:num/"
+timezone      : "US/Pacific"
+markdown      : "kramdown"
+kramdown:
+    smart_quotes: ["apos", "apos", "quot", "quot"]
+gems:
+  - jekyll-redirect-from
+  - jekyll-feed
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      author: "The LANGDEV Project"
+feed:
+  path: "/blog/feed.xml"
