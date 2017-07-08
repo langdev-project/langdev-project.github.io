@@ -1,24 +1,150 @@
-title         : "The LANGDEV Project Blog"
-url           : "http://langdev.xyz"
-author        : "The LANGDEV Project"
-blog_url      : "/blog"
-description   : "Home to various fictional languages"
-lang          : "en"
-permalink     : "/blog/:categories/:title-0:year:month:day.html"
+title         : The LANGDEV Project
+shorttile     : LANGDEV
+url           : http://langdev.xyz
+author        : The LANGDEV Project
+description   : Home to various fictional languages
+splashes      :
+    - Default splashtext!
+    - It's Awesome!
+    - I'm sorry…
+    - My word!
+    - Diacritical!
+    - Unicode!
+    - Constantly growing!
+    - Now organic!
+    - Derive this!
+    - yʹ
+    - Something different!
+    - Thank you!
+    - Math.random()
+    - Not my fault!
+    - Safe!
+    - Refreshing!
+    - What's this?
+    - Your LANGUAGE is evolving!
+    - ECHO!
+    - …echo…
+    - Look inside!
+    - Learn it!
+    - Synergy!
+    - Not parasitic!
+    - Symbiotic!
+    - Non-toxic!
+    - Fancy!
+    - Animated!
+    - Hid
+    - den
+    - Mess
+    - age!
+    - Not mouldy!
+    - β!
+    - Modified!
+    - Not Roman!
+    - New and Improved!
+    - With class!
+    - Scripted!
+    - In line!
+    - Collect them all!
+    - Pulse!
+    - Compact!
+    - Portable!
+    - New!
+    - Redux!
+    - Web 5.0!
+    - Semantic!
+    - In your head!
+    - Retro!
+    - That Olde Tyme Feel!
+    - I remember when…
+    - This stuff used to be…
+    - Experimental!
+    - Not flexible!
+    - Watch that space!
+    - Modern like the 1800's!
+    - Once experimental!
+    - Twice removed!
+    - Thrice resurrected!
+    - Qu… Cua… Fo… frice?
+    - Stolen!
+    - Hyper!
+    - Textual!
+    - Marked up!
+    - Language!
+    - Cited!
+    - Served!
+    - My fav!
+    - Better than twitter!
+    - Vivian!
+    - Tricksy!
+    - Stylish!
+    - Supported everywhere!
+    - \mbox{}
+    - It flows!
+    - In the middle!
+    - db.js no longer!
+    - :)
+    - Anchored!
+    - '#galpals'
+    - Aliens!
+    - Critical Hit!
+    - Symmetric!
+    - Newer!
+    - Revised!
+    - Return!
+    - Line Feed!
+    - remember notepad
+    - 􁀋􁀀􁀍􁀆􁀅􁀄􁀕􁁄
+    - View!
+    - Hypothetical!
+    - I'm rooting for you!
+    - Recursive!
+    - Ya
+    - ML
+    - You ate my look!
+    - You are my lover!
+    - Yes am mystery likely!
+    - Many pages!
+    - Laid out!
+    - A fountain!
+    - Encoded!
+    - Configured!
+    - I'm home!
+    - All about!
+    - Fictional!
+    - Linguistic!
+    - More likely!
+    - More likely!
+    - Legendary!
+    - Up all night!
+    - Modern!
+    - Flavoured!
+    - Vampires!
+    - Spick and span!
+    - Implicit!
+    - Connected!
+    - Give me a ring!
+    - Ꝏh!
+    - Kerning!
+    - Marginal!
+    - In the negative!
+    - Manual adjustment!
+lang          : en
+permalink     : /blog/:categories/:title-0:year:month:day.html
 paginate      : 7
-paginate_path : "/blog/:num/"
-timezone      : "US/Pacific"
-markdown      : "kramdown"
-kramdown:
-    smart_quotes: ["apos", "apos", "quot", "quot"]
-gems:
-  - jekyll-redirect-from
-  - jekyll-feed
-defaults:
+paginate_path : /blog/:num/
+timezone      : US/Pacific
+markdown      : kramdown
+kramdown      :
+    smart_quotes : [apos, apos, quot, quot]
+gems          :
+  - jekyll-coffeescript
+  - jekyll-github-metadata
+defaults      :
   -
-    scope:
-      path: ""
-    values:
-      author: "The LANGDEV Project"
+    scope     :
+      path       : ""
+    values    :
+      author     : The LANGDEV Project
+      layout     : default
 feed:
-  path: "/blog/feed.xml"
+  path: /blog/feed.xml

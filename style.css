@@ -1,0 +1,585 @@
+@charset "UTF-8";
+
+/*  GLOBAL RULES  */
+
+@font-face {
+  font-family: "Junicode";
+  src: local('Junicode Regular'),
+  url('./fonts/Junicode.woff') format('woff'),
+  url('./fonts/Junicode.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: local('Junicode Italic'),
+  url('./fonts/Junicode-Italic.woff') format('woff'),
+  url('./fonts/Junicode-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: local('Junicode Bold'),
+  url('./fonts/Junicode-Bold.woff') format('woff'),
+  url('./fonts/Junicode-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: local('Junicode Bold Italic'),
+  url('./fonts/Junicode-BoldItalic.woff') format('woff'),
+  url('./fonts/Junicode-BoldItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Unifont";
+  src: url('./fonts/Unifont.woff') format('woff'),
+  url('./fonts/Unifont.ttf')  format('truetype');
+  font-weight: 400;
+  unicode-range: U+0-FFFF;
+}
+
+@font-face {
+  font-family: "Unifont Upper";
+  src: url('./fonts/Unifont-Upper.woff') format('woff'),
+  url('./fonts/Unifont-Upper.ttf')  format('truetype');
+  font-weight: 400;
+  unicode-range: U+10000-100FFF;
+}
+
+@font-face {
+  font-family: "Unifont LANGDEV";
+  src: url('./fonts/UnifontLANGDEV.woff') format('woff'),
+  url('./fonts/UnifontLANGDEV.ttf')  format('truetype');
+  font-weight: 400;
+  unicode-range: U+101000-1017FF;
+}
+
+@font-feature-values Junicode {
+  @styleset {
+    insular: 2;
+    high-roman: 4;
+    enlarged: 6;
+  }
+}
+
+*:root {
+  font-family: Junicode, Cardo, "Iowan Old Style", "Unifont LANGDEV", "Unifont Upper", "Unifont", serif;
+  font-size: large;
+  font-weight: 400;
+  font-synthesis: none;
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1.35;
+  text-align: left;
+  quotes: "“" "”" "‘" "’";
+}
+
+@media print {
+  *:root * {
+    color: black;
+    background: white;
+  }
+}
+
+*:root:root:root:root:root [hidden] {
+  display: none;
+}
+
+*[title]:not([title=""]):not(a) {
+  border-bottom: thin currentColor dotted;
+  cursor: help;
+}
+
+@supports (text-decoration-style: dotted) {
+  *[title]:not([title=""]):not(a) {
+    border: none;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+  }
+}
+
+*:lang(en) {
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote:lang(en), blockquote *:lang(en) {
+  quotes: "‘" "’" "“" "”";
+}
+
+#pulse {
+  margin: 1rem;
+  width: 16rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation-duration: 2s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  from {
+    font-size: 1rem;
+  }
+  50% {
+    font-size: 1.2rem;
+  }
+  to {
+    font-size: 1rem;
+  }
+}
+
+*.roman {
+  font-variant-alternates: styleset(high-roman);
+}
+
+*.noalts {
+  font-variant-alternates: normal;
+}
+
+/*  PAGE  */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 31rem;
+  text-align: center;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/*  SECTIONING  */
+
+article, section, aside, header, footer, div {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+article {
+  margin: 1rem 2.5%;
+  border: medium currentColor solid;
+  padding: 1rem 2.5%;
+}
+
+aside {
+  font-size: medium;
+}
+
+body > aside {
+  display: inline-block;
+  margin: 1rem 0 1rem 2.5%;
+  border: thick currentColor solid;
+  padding: 1rem 5%;
+  width: 20%;
+  max-width: 10rem;
+  font-size: medium;
+  vertical-align: top;
+  text-align: left;
+}
+
+footer {
+  margin: 1.5em 0 0;
+  border-top: thin currentColor solid;
+  font-size: small;
+  font-variant-alternates: styleset(enlarged);
+  line-height: 1.5;
+  text-align: right;
+}
+
+footer::before {
+  display: block;
+  margin: 0 0 1.5em;
+  content: "";
+}
+
+footer.signature, blockquote > footer:last-child::before {
+  border: none;
+  padding: 0;
+  font-size: medium;
+  font-variant-alternates: normal;
+  line-height: inherit;
+  content: "– ";
+}
+
+header {
+  position: relative;
+  border: 1rem currentColor solid;
+  text-align: center;
+}
+
+section {
+  margin: 1.5em 0;
+}
+
+section:first-child {
+  margin-top: 0;
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+main {
+  display: inline-block;
+  width: 60%;
+  max-width: 28rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+nav {
+  margin: .675em 0;
+  text-align: center;
+}
+
+header > nav {
+  display: inline-block;
+  margin: 0 1rem;
+  line-height: 1.8;
+  vertical-align: middle;
+}
+
+/*  LISTS  */
+
+ul, ol, dl {
+  margin: .675em 0;
+  padding: 0 0 0 2em;
+  text-align: left;
+}
+
+dl {
+  padding: 0;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+li ul {
+  list-style-type: square;
+}
+
+li li ul {
+  list-style-type: disc;
+}
+
+li li li ul {
+  list-style-type: circle;
+}
+
+li li li li ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+
+li ol {
+  list-style-type: decimal-leading-zero;
+}
+
+li li ol {
+  list-style-type: lower-latin;
+}
+
+li li li ol {
+  list-style-type: lower-greek;
+}
+
+li li li li ol {
+  list-style-type: decimal;
+}
+
+dt {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+dd + dt {
+  margin-top: .675em;
+}
+
+dd {
+  margin: 0;
+  padding-left: 2em;
+}
+
+/*  BLOCK ELEMENTS  */
+
+blockquote {
+  position: relative;
+  margin: 1.35em auto;
+  padding: 0 2em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-style: italic;
+}
+
+figure blockquote {
+  font-size: medium;
+  font-variant-alternates: normal;
+}
+
+blockquote blockquote {
+  margin: .675em 0;
+  padding: 0 1em 0 1em;
+  border-left: thick currentColor solid;
+  font-size: medium;
+}
+
+figcaption {
+  margin: .675em 0;
+  text-align: center;
+  font-variant-alternates: normal;
+}
+
+figure, iframe, img, svg, video {
+  display: block;
+  margin: auto;
+  border: none;
+  padding: 0;
+  max-width: 100%;
+  font-size: small;
+  font-variant-alternates: styleset(enlarge);
+}
+
+main figure, main iframe, main img, main svg, main video {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+figure, main figure {
+  margin: 1.35em auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-variant-alternates: normal;
+}
+
+h1 {
+  position: relative;
+  margin: .6em auto .4em;
+  width: 6em;
+  font-size: 2.5em;
+  line-height: 1;
+  text-align: inherit;
+  z-index: 100;
+}
+
+h2 {
+  margin: 0 0 .45em;
+  font-size: 1.5em;
+}
+
+h3 {
+  margin: 0 0 .54em;
+  font-size: 1.25em;
+}
+
+h4 {
+  margin: 0 0 .3em;
+  font-size: 1.15em;
+}
+
+h5 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+h6 {
+  margin: 0;
+  font-size: 1em;
+}
+
+hr {
+  display: block;
+  position: relative;
+  margin: 1.35em 0;
+  border: none;
+  padding: 0;
+  width: 100%;
+  height: 1.35em;
+  background: none;
+  overflow: hidden;
+  text-align: center;
+  white-space: pre;
+}
+
+hr::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.35em;
+  content: "~ ⁂ ~";
+  text-align: center;
+  white-space: pre;
+}
+
+img.inline, svg.inline {
+  display: inline-block;
+  margin: 0;
+  padding: .16875em;
+  max-height: .675em;
+  max-width: .675em;
+  vertical-align: middle;
+}
+
+p {
+  margin: 0;
+  text-align: justify;
+  text-align-last: center;
+}
+
+p + p {
+  margin-top: .675em;
+}
+
+footer p + p {
+  margin-top: .75em;
+}
+
+pre {
+  margin: .8em 1.2em;
+  font-family: monospace;
+  font-size: .85em;
+  font-weight: 400;
+  line-height: 1;
+  white-space: pre-wrap;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+svg {
+  color: inherit;
+}
+
+/*  PHRASING  */
+
+a[href] {
+  display: inline;
+  color: inherit;
+  text-decoration: underline;
+  -webkit-text-decoration-style: dashed;
+  text-decoration-style: dashed;
+  -webkit-text-decoration-color: inherit;
+  text-decoration-color: inherit;
+  transition: color .3s;
+  transition: color .3s, -webkit-text-decoration-color .3s;
+  transition: color .3s, text-decoration-color .3s;
+}
+
+a[href]:hover {
+  -webkit-text-decoration-color: transparent;
+  text-decoration-color: transparent;
+}
+
+body > header a[href] {
+  display: block;
+  text-decoration: none;
+}
+
+body > header > a[href] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media print {
+
+  a[href] {
+    text-decoration: none;
+  }
+
+  a[href]::after {
+    content: " [" attr(href) "]";
+  }
+
+}
+
+@supports (text-decoration-style: dotted) {
+
+  abbr {
+    border: none;
+  }
+
+}
+
+b {
+  font-weight: 700;
+}
+
+cite, dfn, em, i {
+  font-style: italic;
+}
+
+blockquote cite, blockquote dfn, blockquote em, blockquote i {
+  font-style: normal;
+}
+
+footer:not(.signature) *.noalts, footer:not(.signature) b, footer:not(.signature) cite, footer:not(.signature) dfn, footer:not(.signature) em, footer:not(.signature) i, footer:not(.signature) strong, footer:not(.signature) u, figure *.noalts, figure b, figure cite, figure dfn, figure em, figure i, figure strong, figure u {
+  font-size: 1.2em;
+  font-variant-alternates: normal;
+  line-height: 1;
+}
+
+*:root figcaption cite, *:root figcaption dfn, *:root figcaption em, *:root figcaption i, *:root figcaption u, *:root h1 cite, *:root h1 dfn, *:root h1 em, *:root h1 i, *:root h1 u, *:root h2 cite, *:root h2 dfn, *:root h2 em, *:root h2 i, *:root h2 u, *:root h3 cite, *:root h3 dfn, *:root h3 em, *:root h3 i, *:root h3 u, *:root h4 cite, *:root h4 dfn, *:root h4 em, *:root h4 i, *:root h4 u, *:root h5 cite, *:root h5 dfn, *:root h5 em, *:root h5 i, *:root h5 u, *:root h6 cite, *:root h6 dfn, *:root h6 em, *:root h6 i, *:root h6 u {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+cite {
+  font-variant: small-caps;
+}
+
+code {
+  font-size: .85em;
+  font-family: monospace;
+  line-height: 1;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+dfn {
+  font-weight: 700;
+}
+
+small {
+  font-size: small;
+  font-variant-alternates: styleset(enlarged);
+}
+
+strong {
+  font-weight: 700;
+}
+
+sup {
+  font-size: small;
+  font-variant-numeric: normal;
+  text-transform: uppercase;
+  line-height: 0;
+}
+
+u {
+  font-variant: small-caps;
+  text-decoration: none;
+}

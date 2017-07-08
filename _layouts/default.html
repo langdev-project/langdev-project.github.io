@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
-<base target="_blank">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-{% feed_meta %}
-<link rel="stylesheet" href="{{ '/styling/index.css?v=' | append: site.github.build_revision | relative_url }}">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=670">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" title="New Legendary" href="/themes/nLeg.css">
+    <link rel="stylesheet alternate" title="Night" href="/themes/night.css">
+    <link rel="stylesheet alternate" title="Modern" href="/themes/modern.css">
 
-<a href="{{ site.blog_url }}/" target="_self">
-  <header>
-    <h1>{{ site.title | default: site.github.repository_name }}</h1>
-    <aside>
-      <p> {{ site.description | default: site.github.project_tagline }}
-    </aside>
-  </header>
-</a>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/tools/">T<span style="margin-right: -.122em;"></span>ꝏls</a>
+        </nav><!--  No whitespace allowed!
+     --><a href="/">
+            <h1>{{ site.shorttile | default: site.title | default: site.github.repository_name }}</h1>
+            <p id="pulse">{% for splash in site.splashes %}
+                <span {% if forloop.index == 1 %}      {% else %}hidden{% endif %}>{{ splash }}</span>{% endfor %}
+            </p>
+        </a><!--  No whitespace allowed!
+     --><nav>
+            <a href="/languages/">Languages</a>
+            <a href="/scripts/">Scripts</a>
+            <a href="http://langdev.xyz/dictionary/">Dictionary</a>
+        </nav>
+    </header>
 
 {{ content }}
+    <script type="text/javascript" src="/script.js" async></script>
+
+</html>
