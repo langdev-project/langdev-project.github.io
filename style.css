@@ -119,6 +119,7 @@ blockquote:lang(en), blockquote *:lang(en) {
   line-height: 1.5rem;
   white-space: nowrap;
   overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
   animation-duration: 2s;
   animation-name: pulse;
