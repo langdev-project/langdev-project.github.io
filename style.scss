@@ -1,3 +1,6 @@
+---
+---
+
 @charset "UTF-8";
 
 /*  GLOBAL RULES  */
@@ -79,12 +82,12 @@
   line-height: 1.35;
   text-align: left;
   quotes: "“" "”" "‘" "’";
-}
 
-@media print {
-  *:root * {
-    color: black;
-    background: white;
+  @media print {
+    * {
+      color: black;
+      background: white;
+    }
   }
 }
 
@@ -95,13 +98,11 @@
 *[title]:not([title=""]):not(a) {
   border-bottom: thin currentColor dotted;
   cursor: help;
-}
 
-@supports (text-decoration-style: dotted) {
-  *[title]:not([title=""]):not(a) {
-    border: none;
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
+  @supports (text-decoration-style: dotted) {
+      border: none;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
   }
 }
 
@@ -140,10 +141,12 @@ blockquote:lang(en), blockquote *:lang(en) {
 
 *.roman {
   font-variant-alternates: styleset(high-roman);
+  font-feature-settings: "ss04";
 }
 
 *.noalts {
   font-variant-alternates: normal;
+  font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
 }
 
 /*  PAGE  */
@@ -174,18 +177,18 @@ article {
 
 aside {
   font-size: medium;
-}
 
-body > aside {
-  display: inline-block;
-  margin: 1rem 0 1rem 2.5%;
-  border: thick currentColor solid;
-  padding: 1rem 5%;
-  width: 20%;
-  max-width: 10rem;
-  font-size: medium;
-  vertical-align: top;
-  text-align: left;
+  body > & {
+    display: inline-block;
+    margin: 1rem 0 1rem 2.5%;
+    border: thick currentColor solid;
+    padding: 1rem 5%;
+    width: 20%;
+    max-width: 10rem;
+    font-size: medium;
+    vertical-align: top;
+    text-align: left;
+  }
 }
 
 footer {
@@ -193,23 +196,30 @@ footer {
   border-top: thin currentColor solid;
   font-size: small;
   font-variant-alternates: styleset(enlarged);
+  font-feature-settings: "ss06";
   line-height: 1.5;
   text-align: right;
+
+  &::before {
+    display: block;
+    margin: 0 0 1.5em;
+    content: "";
+  }
 }
 
-footer::before {
-  display: block;
-  margin: 0 0 1.5em;
-  content: "";
-}
-
-footer.signature, blockquote > footer:last-child::before {
+footer.signature, blockquote > footer:last-child {
   border: none;
   padding: 0;
   font-size: medium;
   font-variant-alternates: normal;
+  font-feature-settings: "ss06" off;
   line-height: inherit;
-  content: "– ";
+
+  &::before {
+    display: inline;
+    margin: 0;
+    content: "– ";
+  }
 }
 
 header {
@@ -220,14 +230,14 @@ header {
 
 section {
   margin: 1.5em 0;
-}
 
-section:first-child {
-  margin-top: 0;
-}
+  &:first-child {
+    margin-top: 0;
+  }
 
-section:last-child {
-  margin-bottom: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 main {
@@ -241,13 +251,13 @@ main {
 nav {
   margin: .675em 0;
   text-align: center;
-}
 
-header > nav {
-  display: inline-block;
-  margin: 0 1rem;
-  line-height: 1.8;
-  vertical-align: middle;
+  header > & {
+    display: inline-block;
+    margin: 0 1rem;
+    line-height: 1.8;
+    vertical-align: middle;
+  }
 }
 
 /*  LISTS  */
@@ -264,51 +274,52 @@ dl {
 
 ul {
   list-style-type: circle;
-}
 
-li ul {
-  list-style-type: square;
-}
+  li & {
+    list-style-type: square;
 
-li li ul {
-  list-style-type: disc;
-}
+    li & {
+      list-style-type: disc;
 
-li li li ul {
-  list-style-type: circle;
-}
+      li & {
+        list-style-type: circle;
 
-li li li li ul {
-  list-style-type: square;
+        li & {
+          list-style-type: square;
+        }
+      }
+    }
+  }
 }
 
 ol {
   list-style-type: upper-roman;
-}
 
-li ol {
-  list-style-type: decimal-leading-zero;
-}
+  li & {
+    list-style-type: decimal-leading-zero;
 
-li li ol {
-  list-style-type: lower-latin;
-}
+    li & {
+      list-style-type: lower-latin;
 
-li li li ol {
-  list-style-type: lower-greek;
-}
+      li & {
+        list-style-type: lower-greek;
 
-li li li li ol {
-  list-style-type: decimal;
+        li & {
+          list-style-type: decimal;
+
+        }
+      }
+    }
+  }
 }
 
 dt {
   font-weight: 700;
   text-decoration: underline;
-}
 
-dd + dt {
-  margin-top: .675em;
+  dd + & {
+    margin-top: .675em;
+  }
 }
 
 dd {
@@ -326,24 +337,26 @@ blockquote {
   width: -moz-fit-content;
   width: fit-content;
   font-style: italic;
-}
 
-figure blockquote {
-  font-size: medium;
-  font-variant-alternates: normal;
-}
+  blockquote & {
+    margin: .675em 0;
+    padding: 0 1em 0 1em;
+    border-left: thick currentColor solid;
+    font-size: medium;
+  }
 
-blockquote blockquote {
-  margin: .675em 0;
-  padding: 0 1em 0 1em;
-  border-left: thick currentColor solid;
-  font-size: medium;
+  figure & {
+    font-size: medium;
+    font-variant-alternates: normal;
+    font-feature-settings: "ss06" off;
+  }
 }
 
 figcaption {
   margin: .675em 0;
   text-align: center;
   font-variant-alternates: normal;
+  font-feature-settings: "ss06" off;
 }
 
 figure, iframe, img, svg, video {
@@ -353,13 +366,14 @@ figure, iframe, img, svg, video {
   padding: 0;
   max-width: 100%;
   font-size: small;
-  font-variant-alternates: styleset(enlarge);
-}
+  font-variant-alternates: styleset(enlarged);
+  font-feature-settings: "ss06";
 
-main figure, main iframe, main img, main svg, main video {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  main & {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
 }
 
 figure, main figure {
@@ -372,6 +386,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   font-weight: 700;
   font-variant-alternates: normal;
+  font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
 }
 
 h1 {
@@ -421,18 +436,18 @@ hr {
   overflow: hidden;
   text-align: center;
   white-space: pre;
-}
 
-hr::after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1.35em;
-  content: "~ ⁂ ~";
-  text-align: center;
-  white-space: pre;
+  &::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.35em;
+    content: "~ ⁂ ~";
+    text-align: center;
+    white-space: pre;
+  }
 }
 
 img.inline, svg.inline {
@@ -448,14 +463,14 @@ p {
   margin: 0;
   text-align: justify;
   text-align-last: center;
-}
 
-p + p {
-  margin-top: .675em;
-}
+  & + p {
+    margin-top: .675em;
 
-footer p + p {
-  margin-top: .75em;
+    footer & {
+      margin-top: .75em;
+    }
+  }
 }
 
 pre {
@@ -487,41 +502,35 @@ a[href] {
   transition: color .3s;
   transition: color .3s, -webkit-text-decoration-color .3s;
   transition: color .3s, text-decoration-color .3s;
-}
 
-a[href]:hover {
-  -webkit-text-decoration-color: transparent;
-  text-decoration-color: transparent;
-}
+  @media print {
+      text-decoration: none;
 
-body > header a[href] {
-  display: block;
-  text-decoration: none;
-}
+    &::after {
+      content: " [" attr(href) "]";
+    }
+  }
 
-body > header > a[href] {
-  display: inline-block;
-  vertical-align: middle;
-}
+  &:hover {
+    -webkit-text-decoration-color: transparent;
+    text-decoration-color: transparent;
+  }
 
-@media print {
-
-  a[href] {
+  body > header & {
+    display: block;
     text-decoration: none;
   }
 
-  a[href]::after {
-    content: " [" attr(href) "]";
+  body > header > & {
+    display: inline-block;
+    vertical-align: middle;
   }
-
 }
 
 @supports (text-decoration-style: dotted) {
-
   abbr {
     border: none;
   }
-
 }
 
 b {
@@ -530,21 +539,24 @@ b {
 
 cite, dfn, em, i {
   font-style: italic;
+
+  blockquote & {
+    font-style: normal;
+  }
 }
 
-blockquote cite, blockquote dfn, blockquote em, blockquote i {
-  font-style: normal;
-}
+*.noalts, b, cite, dfn, em, i, strong, u {
+  figure &, footer & {
+    font-size: 1.2em;
+    font-variant-alternates: normal;
+    font-feature-settings: "ss06" off;
+    line-height: 1;
+  }
 
-footer:not(.signature) *.noalts, footer:not(.signature) b, footer:not(.signature) cite, footer:not(.signature) dfn, footer:not(.signature) em, footer:not(.signature) i, footer:not(.signature) strong, footer:not(.signature) u, figure *.noalts, figure b, figure cite, figure dfn, figure em, figure i, figure strong, figure u {
-  font-size: 1.2em;
-  font-variant-alternates: normal;
-  line-height: 1;
-}
-
-*:root figcaption cite, *:root figcaption dfn, *:root figcaption em, *:root figcaption i, *:root figcaption u, *:root h1 cite, *:root h1 dfn, *:root h1 em, *:root h1 i, *:root h1 u, *:root h2 cite, *:root h2 dfn, *:root h2 em, *:root h2 i, *:root h2 u, *:root h3 cite, *:root h3 dfn, *:root h3 em, *:root h3 i, *:root h3 u, *:root h4 cite, *:root h4 dfn, *:root h4 em, *:root h4 i, *:root h4 u, *:root h5 cite, *:root h5 dfn, *:root h5 em, *:root h5 i, *:root h5 u, *:root h6 cite, *:root h6 dfn, *:root h6 em, *:root h6 i, *:root h6 u {
-  font-size: inherit;
-  line-height: inherit;
+  figure blockquote &, figure figcaption &, footer.signature &, blockquote footer:last-child &, h1 &, h2 &, h3 &, h4 &, h5 &, h6 & {
+    font-size: inherit;
+    line-height: inherit;
+  }
 }
 
 cite {
@@ -567,6 +579,7 @@ dfn {
 small {
   font-size: small;
   font-variant-alternates: styleset(enlarged);
+  font-feature-settings: "ss06";
 }
 
 strong {

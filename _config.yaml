@@ -136,6 +136,8 @@ timezone      : US/Pacific
 markdown      : kramdown
 kramdown      :
     smart_quotes : [apos, apos, quot, quot]
+sass          :
+    style        : expanded
 gems          :
   - jekyll-coffeescript
   - jekyll-github-metadata
