@@ -6,7 +6,7 @@
 by Gô SHOEMAKE
 ###
 
-#  This is just a tiny script to handle the setting of our splash text.
+#  This is a tiny script to handle the setting of our splash text.
 
 do ->
 
@@ -34,3 +34,34 @@ do ->
 #  Finally, we make sure our `pulse` is visible by removing the `hidden` attribute on it, if present.
 
     pulse.removeAttribute "hidden"
+
+    return
+
+#   - - -
+
+#  This script sets our stylesheet depending on the time of day.
+
+do ->
+
+#  First we get the current date and time.
+
+    now = new Date
+
+#  Then we get our document's stylesheets.
+#  Our default preferred stylesheet is "New Legendary"
+
+    stylesheets = document.styleSheets
+    preferred = "nLeg-style"
+
+#  If the time is between 20:00 and 08:00, then it's night.
+
+    hours = do now.getHours
+    if hours < 8 or hours >= 20 then preferred = "night-style"
+
+#  This sets our default stylesheet to link to whatever our preferred stylesheet is.
+#  We have to do things this way because Chrome.
+
+    (document.getElementById "default-style").href =
+        (document.getElementById preferred).href
+
+    return

@@ -10,6 +10,7 @@ html, body {
 
 article {
   border-color: #0c0c0c;
+  color: inherit;
   background: #f5f5f5;
 }
 
@@ -21,4 +22,73 @@ body > aside {
 header {
   border-color: #a3a3a3;
   background: #f5f5f5;
+}
+
+table {
+  background: none;
+}
+
+caption {
+  color: inherit;
+  background: none;
+}
+
+td {
+  border-color: currentColor;
+  background: none;
+
+  tr:hover &, tbody:not(:only-of-type):hover & {
+    background: none;
+  }
+
+  tr &:hover, tbody:not(:only-of-type) &:hover {
+    background: none;
+  }
+
+  tfoot tr &, tfoot tr &:hover {
+    color: inherit;
+    background: none;
+  }
+}
+
+th {
+  color: inherit;
+}
+
+h1 {
+  color: inherit;
+}
+
+h2, dt, cite, u {
+  color: inherit;
+  transition: color .3s;
+
+  a[href]:hover & {
+    color: inherit;
+  }
+}
+
+dd, blockquote, dfn, dd p, blockquote p {
+  color: inherit;
+  transition: color .3s;
+
+  a[href]:hover & {
+    color: inherit;
+  }
+}
+
+p, small {
+  color: inherit;
+}
+
+hr {
+  color: inherit;
+}
+
+a[href] {
+  color: inherit;
+}
+
+a[href]:hover {
+  color: inherit;
 }
