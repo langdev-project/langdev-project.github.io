@@ -198,7 +198,6 @@ footer {
   font-variant-alternates: styleset(enlarged);
   font-feature-settings: "ss06";
   line-height: 1.5;
-  text-align: right;
 
   &::before {
     display: block;
@@ -214,6 +213,7 @@ footer.signature, blockquote > footer:last-child {
   font-variant-alternates: normal;
   font-feature-settings: "ss06" off;
   line-height: inherit;
+  text-align: right;
 
   &::before {
     display: inline;
@@ -226,18 +226,6 @@ header {
   position: relative;
   border: 1rem currentColor solid;
   text-align: center;
-}
-
-section {
-  margin: 1.5em 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 main {
@@ -260,16 +248,46 @@ nav {
   }
 }
 
+/*  TABLES  */
+
+table {
+  table-layout: fixed;
+  margin: .675em auto;
+  width: 100%;
+}
+
+caption, th {
+  &, &[title]:not([title=""]) {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-style: solid;
+  }
+}
+
+td {
+  border: thin currentColor solid;
+  padding: 0 .8em;
+}
+
 /*  LISTS  */
 
 ul, ol, dl {
   margin: .675em 0;
-  padding: 0 0 0 2em;
+  padding: 0 1em 0 2em;
   text-align: left;
+
+  & & {
+    margin: 0 -1em 0 -.5em;
+  }
 }
 
 dl {
   padding: 0;
+
+  & & {
+    margin: 0;
+  }
 }
 
 ul {
@@ -387,6 +405,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   font-variant-alternates: normal;
   font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
+
+  article > &:first-child, aside > &:first-child, footer > &:first-child, header > &:first-child {
+    margin-top: 0;
+  }
 }
 
 h1 {
@@ -400,27 +422,32 @@ h1 {
 }
 
 h2 {
-  margin: 0 0 .45em;
+  margin: .45em 0 .675em;
   font-size: 1.5em;
 }
 
 h3 {
-  margin: 0 0 .54em;
+  margin: 1.62em 0 1.08em;
   font-size: 1.25em;
 }
 
 h4 {
-  margin: 0 0 .3em;
+  margin: 1.175em 0 .3em;
   font-size: 1.15em;
 }
 
 h5 {
-  margin: 0;
-  font-size: 1.1em;
+  margin: .675em 0 0;
+  font-size: 1em;
+  font-variant: small-caps;
+
+  &::before {
+    content: " "
+  }
 }
 
 h6 {
-  margin: 0;
+  margin: .3375em 0 0;
   font-size: 1em;
 }
 
@@ -471,10 +498,19 @@ p {
       margin-top: .75em;
     }
   }
+
+  li & {
+    margin: .675em;
+  }
+
+  dl & {
+    text-align-last: left;
+  }
 }
 
 pre {
-  margin: .8em 1.2em;
+  font-family: "Unifont LANGDEV", "Unifont Upper", "Unifont", monospace;
+  margin: .8em 1.175em;
   font-family: monospace;
   font-size: .85em;
   font-weight: 400;
@@ -537,7 +573,11 @@ b {
   font-weight: 700;
 }
 
-cite, dfn, em, i {
+cite {
+  font-style: inherit;
+}
+
+cite:not(.plain), dfn, em, i {
   font-style: italic;
 
   blockquote & {
@@ -545,8 +585,8 @@ cite, dfn, em, i {
   }
 }
 
-*.noalts, b, cite, dfn, em, i, strong, u {
-  figure &, footer & {
+*.noalts, b, cite:not(.plain), dfn, em, i, strong, u {
+  figure &, footer &, small & {
     font-size: 1.2em;
     font-variant-alternates: normal;
     font-feature-settings: "ss06" off;
@@ -563,17 +603,13 @@ cite {
   font-variant: small-caps;
 }
 
-code {
+code, kbd, samp {
   font-size: .85em;
-  font-family: monospace;
+  font-family: "Unifont LANGDEV", "Unifont Upper", "Unifont", monospace;
   line-height: 1;
   -webkit-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-}
-
-dfn {
-  font-weight: 700;
 }
 
 small {

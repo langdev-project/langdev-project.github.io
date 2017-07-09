@@ -128,6 +128,12 @@ splashes      :
     - Marginal!
     - In the negative!
     - Manual adjustment!
+    - Sourced!
+    - Specified!
+    - L!
+    - Wrecked!
+    - Tabular!
+    - With commentary!
 lang          : en
 permalink     : /blog/:categories/:title-0:year:month:day.html
 paginate      : 7

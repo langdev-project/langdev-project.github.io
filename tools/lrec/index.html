@@ -1,0 +1,375 @@
+---
+title : LREC 1.0 Specification
+---
+    <aside>
+        <h3>Frontmatter</h3>
+        <section id="abstract">
+            <h4>Abstract</h4>
+            <p>
+                This document provides information about the proper style and formatting for LexisML Index Records (LRECs), used to catalogue the lexicon of a language.
+        </section>
+        <section id="status">
+            <h4>Status of this document</h4>
+            <p>
+                This document is something of a working draft to keep track of the LREC format until such a time as it can be suitably generalized and well-defined.
+                It is based off of the original never-completed LREC specification, which was abandoned <time datetime="2016-11-10">10 November 2016</time>.
+                This document was last updated on <time datetime="2017-07-08">08 July 2017</time>.
+        </section>
+        <section id="copyright">
+            <h4>Copyright</h4>
+            <p>
+                The text of this document has been released by its author into the public domain under a <a href="http://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><cite>CC0 1.0 Universal Public Domain Dedication</cite></a>.
+        </section>
+        <section id="contents">
+            <h4>Table of contents</h4>
+            <nav>
+                <ol>
+                    <li>
+                        <a href="#introduction">Introduction</a>
+                        <ol>
+                            <li> <a href="#definitions">Definitions</a>
+                        </ol>
+                    <li>
+                        <a href="#format">The LREC Format</a>
+                        <ol>
+                            <li>
+                                <a href="#records">Record and field definitions</a>
+                            <ol>
+                                <li> <a href="#metadata">Metadata records</a>
+                                <li> <a href="#tag-group">Tag-group records</a>
+                                <li> <a href="#lexeme">Lexeme records</a>
+                                <li> <a href="#inflected">Inflected records</a>
+                                <li> <a href="#alternate">Alternate records</a>
+                            </ol>
+                        </ol>
+                    <li> <a href="#references">References</a>
+                </ol>
+            </nav>
+        </section>
+        <section id="tools">
+            <h4>Tools</h4>
+            <p>
+                PHP and Javascript scripts for processing LREC documents are available in <a href="https://github.com/langdev-project/lrec/" target="_blank">the LREC repository</a> on <u>GitHub</u>.
+        </section>
+    </aside><!--  No whitespace allowed!
+
+ --><main>
+        <article>
+            <h2>LexisML Index Records<br>1.0 Specification</h2>
+            <section id="introduction">
+                <h3>Introduction</h3>
+                <p>
+                    The LexisML Index Record (LREC) serves to index the lexicon of a language and provide links to word definitions.
+                    LRECs are designed to be minimalist text files that can store a large number of records in a compact, human-readable format.
+                    The purpose of an LREC is to give users and programs a sense of the scope of a lexicon without having to read each individual entry, thus reducing initial load times for displaying an index thereof.
+                <p>
+                    The format of a LREC is based upon that of the IANA Language Subtag Registry, which is in turn derived from the record-jar format described in <a href="#art-unix"><cite class="plain">[ART-UNIX]</cite></a>.
+                <section id="definitions">
+                    <h4>Definitions</h4>
+                    <dl>
+                        <dt> Begin
+                        <dd>
+                            Of a sequence, to be first in a sequence's contents.
+                        <dt> Blank line
+                        <dd>
+                            A line which contains zero characters; that is, a single U+000A LINE FEED Unicode character.
+                        <dt> Character
+                        <dd>
+                            When not qualified as a Unicode character, a graphic character, as defined in <a href="#unicode"><cite class="plain">[UNICODE]</cite></a>.
+                        <dt> Contents
+                        <dd>
+                            Of a line, the sequence of zero or more characters which comprise the line.
+                            Of another sequence, the sequence itself.
+                            A sequence of characters or lines is said to be <i>contained</i> in another sequence if it is in the sequence's contents.
+                        <dt> End
+                        <dd>
+                            Of a sequence of lines, to be the last lines in a sequence's contents which are not blank.
+                            Of another sequence, to be last in the sequence's contents.
+                        <dt> Field
+                        <dd>
+                            A sequence of lines as defined in <a href="#format"><cite>The LREC Format</cite></a>.
+                        <dt> Indented contents
+                        <dd>
+                            The contents of a line, starting with the first non-space character in the line.
+                        <dt> Line
+                        <dd>
+                            A sequence of zero or more characters followed by a U+000A LINE FEED Unicode character.
+                            Lines <strong>MUST NOT</strong> be longer than 72 bytes.
+                        <dt> LREC
+                        <dd>
+                            A file which conforms to this specification.
+                        <dt> Non-space character
+                        <dd>
+                            A character which is not U+0020 SPACE.
+                        <dt>
+                            Record
+                        <dd>
+                            A sequence of lines as defined in <a href="#format"><cite>The LREC Format</cite></a>.
+                        <dt>
+                            Unicode character
+                        <dd>
+                            A Unicode scalar value, as defined in <a href="#unicode"><cite class="plain">[UNICODE]</cite></a>.
+                    </dl>
+                    <p>
+                        The key words <dfn>MUST</dfn>, <dfn>MUST NOT</dfn>, <dfn>REQUIRED</dfn>, <dfn>SHALL</dfn>, <dfn>SHALL NOT</dfn>, <dfn>SHOULD</dfn>, <dfn>SHOULD NOT</dfn>, <dfn>RECOMMENDED</dfn>, <dfn>NOT RECOMMENDED</dfn>, <dfn>MAY</dfn>, and <dfn>OPTIONAL</dfn> in this document are to be interpreted as described in <a href="#rfc-2119"><cite class="plain">[RFC-2119]</cite></a>.
+                </section>
+            </section>
+            <section id="format">
+                <h3>The LREC Format</h3>
+                <p>
+                    LRECs are plain-text files, encoded in UTF-8 as specified by <a href="#unicode"><cite class="plain">[UNICODE]</cite></a>.
+                    They consist of a sequence of one or more <dfn>records</dfn>, each separated by the two-character sequence U+0025 PERCENT SIGN, U+0025 PERCENT SIGN on its own line.
+                    Records, in turn, consist of several name-value pairs known as <dfn>fields</dfn>.
+                <p>
+                    A field <strong>MUST</strong> consist of the following, in order:
+                <ul>
+                    <li>
+                        <p>
+                            A sequence of characters which does not include the sequence U+0020 SPACE, U+003A COLON, U+0020 SPACE.
+                            These make up the field's <dfn>name</dfn>.
+                    <li>
+                        <p>
+                            The character sequence U+0020 SPACE, U+003A COLON, U+0020 SPACE.
+                    <li>
+                        <p>
+                            A sequence of characters, at least one of which is a non-space character.
+                            These make up the field's <dfn>value</dfn>.
+                            Whitespace which begins or ends a field's value <strong>MUST</strong> be ignored.
+                </ul>
+                <p>
+                    Lines <strong>MUST NOT</strong> be longer than 72 bytes; consequently, field values <strong>MAY</strong> need to be broken across multiple lines.
+                    The contents of any lines which are begun by four U+0020 SPACE characters, starting with the fifth character of the line, <strong>MUST</strong> be considered a continuation of the preceding field's value.
+                    Similarly, lines which do not begin with four U+0020 SPACE characters <strong>MUST NOT</strong> be considered a continuation of the preceding field's value.
+                <p>
+                    Lines whose contents are begun by exactly one (not two) U+0025 PERCENT SIGN character are comments and <strong>MUST</strong> be ignored.
+                    An LREC <strong>MUST NOT</strong> contain lines which are not either part of a field, a comment, or the sequence U+0025 PERCENT SIGN, U+0025 PERCENT SIGN, U+000A LINE FEED.
+                <p>
+                    Fields are referred to by their names.
+                    Except where otherwise specified, more than one field of a particular name <strong>MUST NOT</strong> appear in a single record.
+                    All fields which are not marked as <i>OPTIONAL</i> or <i>RECOMMENDED</i> are <strong>REQUIRED</strong> to appear in a record's contents.
+                    Except where otherwise specified, field names are case-insensitive but field values are case-sensitive.
+                <section id="records">
+                    <h4>Record and field definitions</h4>
+                    <p>
+                        The following records are defined by this document:
+                    <section id="metadata">
+                        <h5>Metadata records</h5>
+                        <p>
+                            A metadata record <strong>MUST</strong> begin a LREC, and <strong>MUST NOT</strong> appear elsewhere in the document.
+                            It consists of the following fields, in any order, specified by name:
+                        <dl>
+                            <dt> Title
+                            <dd>
+                                <p>
+                                    The title of the LDOC.
+                            <dt> Subtitle
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    The subtitle of the LDOC.
+                            <dt> Author
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    The author(s) of the LDOC.
+                            <dt> Date
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    The date upon which the LDOC was last modified.
+                                    The value of a date field <strong>SHOULD</strong> be in the "full-date" format as specified by <a href="#rfc-3339"><cite class="plain">[RFC-3339]</cite></a>.
+                            <dt> Language
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    A language tag matching the syntax provided in <a href="#bcp-47"><cite class="plain">[BCP-47]</cite></a>, describing the language of the LDOC as a whole; ie, that of its intended audience.
+                                    This <strong>SHOULD</strong> be a valid (recognized) tag but <strong>MAY</strong> include private-use components.
+                            <dt> Description
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    A description of the scope and purpose of the LDOC, or similar relevant information.
+                            <dt> Splash
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    Splash text; that is, miscellaneous words and phrases used to celebrate different aspects or achievements of the document.
+                                    This field <strong>MAY</strong> appear more than once.
+                            <dt> Frontmatter
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    A <abbr title="Uniform Resource Identifier">URI</abbr> at which the frontmatter for the dictionary may be retrieved, if available.
+                        </dl>
+                    </section>
+                    <section id="tag-group">
+                        <h5>Tag-group records</h5>
+                        <p>
+                            A tag-group record groups together tags for later use in lexeme records.
+                            If present, tag-group records <strong>MUST</strong> appear before any lexeme records.
+                            They consist of the following fields, in any order, specified by name:
+                        <dl>
+                            <dt> Group
+                            <dd>
+                                <p>
+                                    The name of the tag-group.
+                                    This <strong>MUST</strong> be unique across an LDOC; ie, there must not be more than one tag-group record with a given value for its group field.
+                                    The value of this field is case-insensitive.
+                            <dt> Description
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    A description of the tag-group.
+                            <dt> Subgroup
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    The name of another tag-group which should be considered a part of this one.
+                                    If present, this <strong>MUST</strong> match the group field of a tag-group record, which <strong>MUST</strong> appear before this one.
+                                    This field <strong>MAY</strong> appear more than once.
+                                    The value of this field is case-insensitive.
+                            <dt> Tag
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    The name of a tag which should be considered a part of this tag-group.
+                                    This field MAY appear more than once.
+                                    The value of this field is case- insensitive.
+                        </dl>
+                        <p>
+                            Although both <code>tag</code> and <code>subgroup</code> fields are <strong>OPTIONAL</strong>, at least one of these fields <strong>MUST</strong> appear in a tag-group record.
+                            Furthermore, both fields <strong>MUST</strong> be unique across an LDOC; that is, any two <code>tag</code> or <code>subgroup</code> fields in an LDOC <strong>MUST NOT</strong> have the same value when compared in a case-insensitive manner, regardless of the record they are contained in.
+                    </section>
+                    <section id="lexeme">
+                        <h5>Lexeme records</h5>
+                        <p>
+                            A lexeme record provides information on a lexeme.
+                            It consists of the following fields, in any order, specified by name:
+                        <dl>
+                            <dt> Lexeme
+                            <dd>
+                                <p>
+                                    The lexeme itself.
+                                    This <strong>MUST</strong> be unique across an LDOC; ie, there must not be more than one lexeme record with a given lexeme field.
+                            <dt> At
+                            <dd>
+                                <p>
+                                    A <abbr title="Uniform Resource Identifier">URI</abbr> at which information on the lexeme can be retrieved.
+                            <dt> Language
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    A language tag matching the syntax provided in <a href="#bcp-47"><cite class="plain">[BCP-47]</cite></a>, describing the language of the lexeme itself.
+                                    If this field is absent but the language field is present in the LDOC's metadata record, the language of the lexeme <strong>MUST</strong> be inherited from the language of the LDOC as a whole.
+                            <dt> Pronunciation
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    A hint at pronouncing the lexeme.
+                                    This field <strong>MAY</strong> appear more than once.
+                            <dt> Gloss
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    A brief gloss of the lexeme.
+                        </dl>
+                    </section>
+                    <section id="inflection">
+                        <h5>Inflection records</h5>
+                        <p>
+                            An inflection record provides inflected forms for lexemes.
+                            It consists of the following fields, in any order, specified by name:
+                        <dl>
+                            <dt> Inflected
+                            <dd>
+                                <p>
+                                    The inflected form.
+                            <dt> Of
+                            <dd>
+                                <p>
+                                    The lexeme that the record provides an inflection of.
+                                    This MUST match the lexeme field of a lexeme record, which MUST appear before the given inflection record.
+                            <dt> Pronunciation
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    A hint at pronouncing the inflected form.
+                                    This field <strong>MAY</strong> appear more than once.
+                        </dl>
+                        <p>
+                            There <strong>MUST NOT</strong> be any two inflection records in a single LDOC with identical values for both the <code>inflected</code> and <code>of</code> fields.
+                    </section>
+                    <section id="alternate">
+                        <h5>Alternate records</h5>
+                        <p>
+                            An alternate record provides alternate forms for lexemes or inflections.
+                            It consists of the following fields, in any order, specified by their field names:
+                        <dl>
+                            <dt> Alternate
+                            <dd>
+                                <p>
+                                    The alternate form.
+                            <dt> For
+                            <dd>
+                                <p>
+                                    The lexeme or inflection that the record provides an alternate for.
+                                    This <strong>MUST</strong> match the lexeme field of a lexeme record or the inflected field of an inflection record, either of which <strong>MUST</strong> appear before the given alternate record.
+                            <dt> Of
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    If the <code>for</code> field refers to an inflection, this field <strong>MUST</strong> match the <code>of</code> field of the corresponding inflection record.
+                                    Otherwise, this field <strong>MUST NOT</strong> be present.
+                            <dt> Script
+                            <dd>
+                                <p>
+                                    <small>(<strong>RECOMMENDED</strong>)</small>
+                                    A script tag as specified in <a href="#bcp-47"><cite class="plain">[BCP-47]</cite></a>, describing the script that the alternate form is written in.
+                                    If left unspecified, the script is assumed to be the same as the lexeme that the record provides an alternate for.
+                            <dt> Pronunciation
+                            <dd>
+                                <p>
+                                    <small>(<strong>OPTIONAL</strong>)</small>
+                                    If the pronunciation of the alternate differs from the original lexeme, a hint at its pronunciation.
+                                    This field <strong>MAY</strong> appear more than once.
+                        </dl>
+                        <p>
+                            Any two alternate records in a single LDOC <strong>MUST NOT</strong> have identical values for both the <code>alternate</code> and <code>for</code> fields, when both records provide an alternate form for a lexeme, or identical values for all three of the <code>alternate</code>, <code>for</code>, and <code>of</code> fields, when both records provide an alternate form for an inflection.
+                    </section>
+                </section>
+            </section>
+            <footer id="references">
+                <h3>References</h3>
+                <dl>
+                    <dt id="art-unix">[ART-UNIX]</dt>
+                    <dd>
+                        Eric S. Raymond.
+                        <cite>The Art of Unix Programming</cite>.
+                        <time datetime="2003">2003</time>.
+                        <a href="http://www.catb.org/~esr/writings/taoup/">http://www.catb.org/~esr/writings/taoup/</a>.
+                    <dt id="bcp-47">[BCP-47]</dt>
+                    <dd>
+                        A. Phillips, Lab126 and M. Davis, Google; editors.
+                        <cite>Tags for Identifying Languages</cite>.
+                        <time datetime="2009-09">September 2009</time>.
+                        <a href="http://tools.ietf.org/html/bcp47">http://tools.ietf.org/html/bcp47</a>.
+                    <dt id="rfc-2119">[RFC-2119]</dt>
+                    <dd>
+                        S. Bradner, Harvard University.
+                        <cite>Key words for use in RFCs to Indicate Requirement Levels</cite>.
+                        <time datetime="1997-03">March 1997</time>.
+                        <a href="http://tools.ietf.org/html/rfc2119">http://tools.ietf.org/html/rfc2119</a>.
+                    <dt id="rfc-3339">[RFC-3339]</dt>
+                    <dd>
+                        G. Klyne, Clearswift Corporation, editor and C. Newman, Sun Microsystems.
+                        <cite>Date and Time on the Internet: Timestamps</cite>.
+                        <time datetime="2002-07">July 2002</time>.
+                        <a href="http://tools.ietf.org/html/rfc3339">http://tools.ietf.org/html/rfc3339</a>.
+                    <dt id="unicode">[UNICODE]</dt>
+                    <dd>
+                        The Unicode Consortium.
+                        <cite>The Unicode Standard</cite>.
+                        <a href="http://www.unicode.org/versions/">http://www.unicode.org/versions/</a>.
+            </footer>
+        </article>
+    </main>

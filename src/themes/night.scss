@@ -1,0 +1,98 @@
+---
+---
+
+@charset "UTF-8";
+
+html, body {
+  background: #222222;
+  color: #EEEEEE;
+}
+
+article {
+  border-color: #220000;
+  color: #BB99AA;
+  background: #131313;
+}
+
+body > aside {
+  border-color: #220000;
+  background: #330011;
+}
+
+header {
+  border-color: #000000;
+  background: #330011;
+}
+
+table {
+  background: #331221;
+}
+
+caption {
+  color: #551100;
+  background: #000000;
+}
+
+td {
+  border-color: #542133;
+  background: #441122;
+
+  tr:hover &, tbody:not(:only-of-type):hover & {
+    background: #4F1F2F;
+  }
+
+  tr &:hover, tbody:not(:only-of-type) &:hover {
+    background: #5F2F3F;
+  }
+
+  tfoot tr &, tfoot tr &:hover {
+    color: #DD0013;
+    background: #131313;
+  }
+}
+
+th {
+  color: white;
+}
+
+#pulse {
+  color: #CC3355;
+}
+
+h1 {
+  color: #EEEEEE;
+}
+
+h2, dt, cite, u {
+  color: #EEEEEE;
+  transition: color .3s;
+
+  a[href]:hover & {
+    color: inherit;
+  }
+}
+
+dd, blockquote, dfn, dd p, blockquote p {
+  color: #DD0013;
+  transition: color .3s;
+
+  a[href]:hover & {
+    color: inherit;
+  }
+}
+
+p, small {
+  color: #BB99AA;
+}
+
+hr {
+  color: #FFBBC3;
+}
+
+a[href] {
+  color: #BCBCBC;
+}
+
+a[href]:hover {
+  color: #DEDEDE;
+}

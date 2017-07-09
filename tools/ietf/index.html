@@ -1,0 +1,344 @@
+---
+title : IETF Language Tags
+---
+    <aside>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/IETF_language_tag" title="IETF language tag" target="_blank"><u><abbr title="Internet Engineering Task Force">IETF</abbr></u> language tags</a> are defined by <a href="https://tools.ietf.org/rfc/bcp/bcp47.txt" title="Tags for Identifying Languages" target="_blank"><i><abbr title="Best Current Practices">BCP</abbr> 47</i></a> and are used by websites and other technologies to specify the language and script of textual content.
+        <p>
+            This page defines a number of private-use subtags which can then be used with <u>LANGDEV</u> documents.
+    </aside><!--  No whitespace allowed!
+
+ --><main>
+        <article>
+            <h2>IETF Language Tags for <u>LANGDEV</u> Languages</h2>
+            <section id="introduction">
+                <h3>Introduction</h3>
+                <p>
+                    The organization of documents within <u>the LANGDEV Project</u> is based heavily on the <a href="https://en.wikipedia.org/wiki/IETF_language_tag" title="IETF language tag" target="_blank"><u><abbr title="Internet Engineering Task Force">IETF</abbr></u> language tags</a>.
+                    <u>The LANGDEV Project</u> defines a number of <u><abbr title="Internet Engineering Task Force">IETF</abbr></u>-complaint subtags for use with <u>LANGDEV</u> languages.
+                <p>
+                    The <u>LANGDEV</u> subtags have been chosen so as not to conflict with existing registrations; however, as they have not been registered, they should be preceded by the private-use <code>x</code> subtag in practice.
+                    For maximum clarity, it is recommended that IETF tags for LANGDEV languages consist of the following components, in order:
+                <ol>
+                    <li>
+                        The primary language subtag <code>art</code>, which denotes an artificial language
+                    <li>
+                        If the language is being written in a registered (non-<u>LANGDEV</u>) script, the corresponding script subtag
+                    <li>
+                        The private-use subtag <code>x</code>
+                    <li>
+                        The (unregistered, non-depreciated) primary subtag for the language, as defined below
+                    <li>
+                        If the language is being written in an unregistered (<u>LANGDEV</u>) script, the corresponding script subtag
+                    <li>
+                        If the language tag should denote a particular defined variant, the corresponding variant subtag(s)
+                </ol>
+                <p>
+                    For example, the correct language subtag for <u>Jastugay</u> written using the <u>Latin</u> script would be <code>art-Latn-x-jst</code>, and the correct language subtag for <u>Classical Sevensi</u> written using <u>Ancient Sevensi Runes</u> would be <code>art-x-svi-Sevr</code>.
+                <p>
+                    Processors which wish to support <u>LANGDEV</u> languages <strong>should</strong> interpret any tag which matches this sequence as a <u>LANGDEV</u> language tag.
+            </section>
+            <section id="tags">
+                <h3>The tags</h3>
+                <table id="collections">
+                    <caption>Language collections</caption>
+                    <col style="width: 22.5%;"></colgroup>
+                    <col></colgroup>
+                    <col style="width: 60%;">
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Parent language collection"> Parent
+                            <th scope="col" title="Language tag"> Tag
+                            <th scope="col" title="Name of language"> Name
+                    <tbody>
+                        <tr>
+                            <td> <!--  Empty  -->
+                            <td> <code>flu</code>
+                            <td> <a href="/languages/flu"><u>Fluîne</u></a>
+                        <tr>
+                            <td> <!--  Empty  -->
+                            <td> <code>fzn</code>
+                            <td> <a href="/languages/fzn"><u>Fizonal</u></a>
+                        <tr>
+                            <td> <!--  Empty  -->
+                            <td> <code>jsv</code>
+                            <td> <a href="/languages/jsv"><u>Jastu-Sevensi</u></a>
+                        <tr>
+                            <td> <code>jsv</code>
+                            <td> <code>jtl</code>
+                            <td> <a href="/languages/jtl"><u>Jastulæ</u></a>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <p>
+                                    <small>Language-collection subtags should only be used if a more specific primary language subtag is not applicable.</small>
+                </table>
+                <table id="languages">
+                    <caption>Specific languages</caption>
+                    <col style="width: 22.5%;"></colgroup>
+                    <col></colgroup>
+                    <col style="width: 60%;">
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Parent language collection"> Parent
+                            <th scope="col" title="Language tag"> Tag
+                            <th scope="col" title="Name of language"> Name
+                    <tbody>
+                        <tr>
+                            <td> <code>fzn</code>
+                            <td> <code>fiz</code>
+                            <td> <a href="/languages/fiz"><u>Fizeng</u></a>
+                        <tr>
+                            <td> <code>ine</code> :&nbsp;<code>gem</code> :&nbsp;<code>gmw</code>
+                            <td> <code>oen</code>
+                            <td> <a href="/languages/oen"><u>The Old Language</u></a>
+                        <tr>
+                            <td> <code>jsv</code>
+                            <td> <code>eho</code>
+                            <td> <a href="/languages/eho"><u>Eho</u></a>
+                        <tr>
+                            <td> <code>jsv</code>
+                            <td> <code>lrx</code>
+                            <td> <a href="/languages/lrx"><u>Lrex</u></a>
+                        <tr>
+                            <td> <code>jsv</code> :&nbsp;<code>jtl</code>
+                            <td> <code>jst</code>
+                            <td> <a href="/languages/jst"><u>Jastugay</u></a>
+                        <tr>
+                            <td> <code>jsv</code> :&nbsp;<code>jtl</code>
+                            <td> <code>osm</code>
+                            <td> <a href="/languages/osm"><u>Middle Sevensi</u></a>
+                        <tr>
+                            <td> <code>jsv</code> :&nbsp;<code>jtl</code>
+                            <td> <code>osv</code>
+                            <td> <a href="/languages/osv"><u>Classical Sevensi</u></a>
+                        <tr>
+                            <td> <code>jsv</code> :&nbsp;<code>jtl</code>
+                            <td> <code>svi</code>
+                            <td> <a href="/languages/svi"><u>Sevensi</u></a>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <p>
+                                    <small>Note that parent language-collection subtags are not necessarily <u>LANGDEV</u>-specified (ie, they might be registered <u><abbr title="Internet Engineering Task Force">IETF</abbr></u> tags).</small>
+                </table>
+                <table id="scripts">
+                    <caption>Scripts</caption>
+                    <col></colgroup>
+                    <col style="width: 60%;">
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Script tag"> Tag
+                            <th scope="col" title="Name of script"> Name
+                    <tbody>
+                        <tr>
+                            <td> <code>Bkde</code>
+                            <td> <a href="/scripts/bkde"><u>Bencode</u></a>
+                        <tr>
+                            <td> <code>Sevi</code>
+                            <td> <a href="/scripts/sevi"><u>Sevensi</u></a>
+                        <tr>
+                            <td> <code>Sevr</code>
+                            <td> <a href="/scripts/sevr"><u>Ancient Sevensi Runes</u></a>
+                </table>
+                <table id="variants">
+                    <caption>Language variants</caption>
+                    <col></colgroup>
+                    <col style="width: 22.5%;"></colgroup>
+                    <col style="width: 60%;">
+                    <thead>
+                        <tr>
+                        <tr>
+                            <th scope="col" title="Language tag(s)"> Language(s)
+                            <th scope="col" title="Variant tag(s)"> Variant(s)
+                            <th scope="col" title="Description of variants"> Description
+                    <tbody id="eho-variants">
+                        <tr>
+                            <td rowspan="0"> <code>eho</code>
+                            <td> <code>0001</code>
+                            <td> <u>Eho <span class="roman">I</span></u>
+                        <tr>
+                            <td> <code>0002</code>
+                            <td> <u>Eho <span class="roman">II</span></u>
+                        <tr>
+                            <td> <code>0003</code>
+                            <td> <u>Eho <span class="roman">III</span></u>
+                        <tr>
+                            <td> <code>0004</code>
+                            <td> <u>Eho <span class="roman">IV</span></u>
+                    <tbody id="fiz-variants">
+                        <tr>
+                            <td rowspan="0"> <code>fiz</code>
+                            <td> <code>proto</code>
+                            <td> <u>Fizeng Proto-Language</u>
+                        <tr>
+                            <td> <code>1der</code>
+                            <td> <u>Fizeng First-Derivative</u>
+                        <tr>
+                            <td> <code>2der</code>
+                            <td> <u>Fizeng Second-Derivative</u>
+                        <tr>
+                            <td> <code>release</code>
+                            <td> <u>Fizeng Release-Candidate</u>
+                        <tr>
+                            <td> <code>final</code>
+                            <td> <u>Fizeng Final-Release</u>
+                    <tbody id="jst-variants">
+                        <tr>
+                            <td rowspan="0"> <code>jst</code>
+                            <td> <code>0008</code>
+                            <td> <u>Jastugay <span class="roman">VIII</span></u>
+                        <tr>
+                            <td> <code>0009</code>
+                            <td> <u>Jastugay <span class="roman">VIV</span></u>
+                    <tbody id="jtl-variants">
+                        <tr>
+                            <td rowspan="0"> <code>jtl</code>
+                            <td> <code>0001</code>
+                            <td> <u>Jastulæ <span class="roman">I</span></u>
+                        <tr>
+                            <td> <code>0002</code>
+                            <td> <u>Jastulæ <span class="roman">II</span></u>
+                        <tr>
+                            <td> <code>0003</code>
+                            <td> <u>Jastulæ <span class="roman">III</span></u>
+                        <tr>
+                            <td> <code>0004</code>
+                            <td> <u>Jastulæ <span class="roman">IV</span></u>
+                        <tr>
+                            <td> <code>0005</code>
+                            <td> <u>Jastulæ <span class="roman">V</span></u>
+                        <tr>
+                            <td> <code>0006</code>
+                            <td> <u>Jastulæ <span class="roman">VI</span></u>
+                        <tr>
+                            <td> <code>0007</code>
+                            <td> <u>Jastulæ <span class="roman">VII</span></u>
+                    <tbody id="lrx-variants">
+                        <tr>
+                            <td rowspan="0"> <code>lrx</code>
+                            <td> <code>0001</code>
+                            <td> <u>Lrex <span class="roman">I</span></u>
+                        <tr>
+                            <td> <code>0002</code>
+                            <td> <u>Lrex <span class="roman">II</span></u>
+                        <tr>
+                            <td> <code>0003</code>
+                            <td> <u>Lrex <span class="roman">III</span></u>
+                        <tr>
+                            <td> <code>0004</code>
+                            <td> <u>Lrex <span class="roman">IV</span></u>
+                        <tr>
+                            <td> <code>0005</code>
+                            <td> <u>Lrex <span class="roman">V</span></u>
+                        <tr>
+                            <td> <code>0006</code>
+                            <td> <u>Lrex <span class="roman">VI</span></u>
+                    <tbody id="osv-variants">
+                        <tr>
+                            <td rowspan="0"> <code>osv</code>
+                            <td> <code>0009</code>
+                            <td> <u>Classical Sevensi <span class="roman">VIV</span></u>
+                        <tr>
+                            <td> <code>0010</code>
+                            <td> <u>Classical Sevensi <span class="roman">X</span></u>
+                        <tr>
+                            <td> <code>0011</code>
+                            <td> <u>Classical Sevensi <span class="roman">XI</span></u>
+                        <tr>
+                            <td> <code>0012</code>
+                            <td> <u>Classical Sevensi <span class="roman">XII</span></u>
+                </table>
+                <table id="depreciated">
+                    <caption>Depreciated tags</caption>
+                    <col></colgroup>
+                    <col style="width: 22.5%;"></colgroup>
+                    <col style="width: 60%;">
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Current tag"> Current
+                            <th scope="col" title="Depreciated tag"> Depreciated
+                            <th scope="col" title="Note about depreciation"> Note
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>eho</code>
+                            <td> <code>qeh</code>
+                            <td>
+                                Private-use language subtag.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>fiz</code>
+                            <td> <code>qdi</code>
+                            <td rowspan="4">
+                                Private-use language subtags.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                                These four tags correspond to the <code>1der</code>, <code>2der</code>, <code>release</code>, and <code>final</code> variant subtags, respectively.
+                        <tr>
+                            <td> <code>qdd</code>
+                        <tr>
+                            <td> <code>qrc</code>
+                        <tr>
+                            <td> <code>qfi</code>
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>fzn</code>
+                            <td> <code>qpt</code>
+                            <td>
+                                Private-use language subtag.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>jst</code>
+                            <td> <code>x-XX-jt</code>
+                            <td>
+                                Tag used in the original <u><span class="roman">VIII</span></u> dictionary.
+                        <tr>
+                            <td> <code>x-jt</code>
+                            <td rowspan="2">
+                                Tags used in the <u><span class="roman">VIV</span></u> dictionary; the <code>ancient</code> variant subtag was used to refer to <u><span class="roman">VIII</span></u>.
+                        <tr>
+                            <td> <code>x-jt-ancient</code>
+                        <tr>
+                            <td> <code>qjt</code>
+                            <td>
+                                Private-use language subtag.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>jtl</code>
+                            <td> <code>x-XX-jl</code>
+                            <td>
+                                Tag used in the original <u>Jastugay <span class="roman">VIII</span></u> dictionary to refer to <u>Jastulæ</u> words.
+                        <tr>
+                            <td> <code>x-jl</code>
+                            <td>
+                                Tag used in the <u>Jastugay <span class="roman">VIV</span></u> dictionary to refer to <u>Jastulæ</u> words.
+                        <tr>
+                            <td> <code>qjl</code>
+                            <td>
+                                Private-use language subtag.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>lrx</code>
+                            <td> <code>qlr</code>
+                            <td>
+                                Private-use language subtag.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                    <tbody>
+                        <tr>
+                            <td rowspan="0"> <code>oen</code>
+                            <td> <code>qol</code>
+                            <td>
+                                Private-use language subtag.
+                                Abandoned in favor of <code>art-x-*</code> tagging, which is more specific.
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <p>
+                                    <small>These tags do <strong>not</strong> conform to <u>LANGDEV</u> standards and should not be used. Nevertheless, they might still be found in older documents.</small>
+                </table>
+            </section>
+        </article>
+    </main>
