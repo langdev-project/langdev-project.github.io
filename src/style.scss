@@ -266,8 +266,10 @@ caption, th {
 }
 
 td {
+  position: relative;
   border: thin currentColor solid;
   padding: 0 .8em;
+  z-index: 1;
 }
 
 /*  LISTS  */
