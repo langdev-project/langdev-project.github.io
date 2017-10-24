@@ -29,7 +29,7 @@ table {
 }
 
 caption {
-  color: #001155;
+  color: black;
   background: #AAABBC;
 }
 
@@ -51,15 +51,11 @@ td {
   }
 }
 
-th {
-  color: black;
-}
-
 h1 {
   color: black;
 }
 
-h2, dt, cite, u {
+h3, dt, cite, u {
   color: black;
   transition: color .3s;
 

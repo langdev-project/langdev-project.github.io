@@ -73,7 +73,6 @@ splashes      :
     - Cited!
     - Served!
     - My fav!
-    - Better than twitter!
     - Vivian!
     - Tricksy!
     - Stylish!
@@ -123,7 +122,6 @@ splashes      :
     - Implicit!
     - Connected!
     - Give me a ring!
-    - Ꝏh!
     - Kerning!
     - Marginal!
     - In the negative!
@@ -134,6 +132,14 @@ splashes      :
     - Wrecked!
     - Tabular!
     - With commentary!
+    - Old look!
+    - New taste!
+    - Configurable!
+    - Son!
+    - In the Beginning…
+    - In the End…
+    - Any objections?
+    - M
 lang          : en
 permalink     : /blog/:categories/:title-0:year:month:day.html
 paginate      : 7
@@ -144,15 +150,16 @@ kramdown      :
     smart_quotes : [apos, apos, quot, quot]
 sass          :
     style        : expanded
-gems          :
-  - jekyll-coffeescript
-  - jekyll-github-metadata
+plugins       :
+    - jekyll-coffeescript
+    - jekyll-github-metadata
 defaults      :
-  -
-    scope     :
-      path       : ""
-    values    :
-      author     : The LANGDEV Project
-      layout     : default
-feed:
-  path: /blog/feed.xml
+    -
+        scope    :
+            path    : ""
+        values   :
+            author  : The LANGDEV Project
+            layout  : default
+            styles  :
+                day   : "nLeg"
+                night : "night"

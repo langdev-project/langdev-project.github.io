@@ -51,17 +51,18 @@ do ->
 #  Our default preferred stylesheet is "New Legendary"
 
     stylesheets = document.styleSheets
-    preferred = "nLeg-style"
+    preferred = ".day-style"
 
 #  If the time is between 20:00 and 08:00, then it's night.
 
     hours = do now.getHours
-    if hours < 8 or hours >= 20 then preferred = "night-style"
+    if hours < 8 or hours >= 20 then preferred = ".night-style"
 
 #  This sets our default stylesheet to link to whatever our preferred stylesheet is.
 #  We have to do things this way because Chrome.
 
-    (document.getElementById "default-style").href =
-        (document.getElementById preferred).href
+    if style = document.querySelector 'link[rel~="stylesheet"]' +
+        preferred
+            (document.getElementById "default-style").href = style.href
 
     return

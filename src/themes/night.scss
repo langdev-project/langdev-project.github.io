@@ -29,7 +29,7 @@ table {
 }
 
 caption {
-  color: #551100;
+  color: #EEEEEE;
   background: #000000;
 }
 
@@ -51,10 +51,6 @@ td {
   }
 }
 
-th {
-  color: white;
-}
-
 #pulse {
   color: #CC3355;
 }
@@ -63,7 +59,7 @@ h1 {
   color: #EEEEEE;
 }
 
-h2, dt, cite, u {
+h3, dt, cite, u {
   color: #EEEEEE;
   transition: color .3s;
 

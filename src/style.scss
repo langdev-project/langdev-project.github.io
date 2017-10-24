@@ -6,632 +6,651 @@
 /*  GLOBAL RULES  */
 
 @font-face {
-  font-family: "Junicode";
-  src: local('Junicode Regular'),
-  url('./fonts/Junicode.woff') format('woff'),
-  url('./fonts/Junicode.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 400;
+	font-family: "Junicode";
+	src: local('Junicode Regular'),
+		url('./fonts/Junicode.woff') format('woff'),
+		url('./fonts/Junicode.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
 }
 
 @font-face {
-  font-family: "Junicode";
-  src: local('Junicode Italic'),
-  url('./fonts/Junicode-Italic.woff') format('woff'),
-  url('./fonts/Junicode-Italic.ttf') format('truetype');
-  font-style: italic;
-  font-weight: 400;
+	font-family: "Junicode";
+	src: local('Junicode Italic'),
+		url('./fonts/Junicode-Italic.woff') format('woff'),
+		url('./fonts/Junicode-Italic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: 400;
 }
 
 @font-face {
-  font-family: "Junicode";
-  src: local('Junicode Bold'),
-  url('./fonts/Junicode-Bold.woff') format('woff'),
-  url('./fonts/Junicode-Bold.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 700;
+	font-family: "Junicode";
+	src: local('Junicode Bold'),
+		url('./fonts/Junicode-Bold.woff') format('woff'),
+		url('./fonts/Junicode-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 700;
 }
 
 @font-face {
-  font-family: "Junicode";
-  src: local('Junicode Bold Italic'),
-  url('./fonts/Junicode-BoldItalic.woff') format('woff'),
-  url('./fonts/Junicode-BoldItalic.ttf') format('truetype');
-  font-style: italic;
-  font-weight: 700;
+	font-family: "Junicode";
+	src: local('Junicode Bold Italic'),
+		url('./fonts/Junicode-BoldItalic.woff') format('woff'),
+		url('./fonts/Junicode-BoldItalic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: 700;
 }
 
 @font-face {
-  font-family: "Unifont";
-  src: url('./fonts/Unifont.woff') format('woff'),
-  url('./fonts/Unifont.ttf')  format('truetype');
-  font-weight: 400;
-  unicode-range: U+0-FFFF;
+	font-family: "Unifont";
+	src: url('./fonts/Unifont.woff') format('woff'),
+		url('./fonts/Unifont.ttf')  format('truetype');
+	font-weight: 400;
+	unicode-range: U+0-FFFF;
 }
 
 @font-face {
-  font-family: "Unifont Upper";
-  src: url('./fonts/Unifont-Upper.woff') format('woff'),
-  url('./fonts/Unifont-Upper.ttf')  format('truetype');
-  font-weight: 400;
-  unicode-range: U+10000-100FFF;
+	font-family: "Unifont Upper";
+	src: url('./fonts/Unifont-Upper.woff') format('woff'),
+		url('./fonts/Unifont-Upper.ttf')  format('truetype');
+	font-weight: 400;
+	unicode-range: U+10000-100FFF;
 }
 
 @font-face {
-  font-family: "Unifont LANGDEV";
-  src: url('./fonts/UnifontLANGDEV.woff') format('woff'),
-  url('./fonts/UnifontLANGDEV.ttf')  format('truetype');
-  font-weight: 400;
-  unicode-range: U+101000-1017FF;
+	font-family: "Unifont LANGDEV";
+	src: url('./fonts/UnifontLANGDEV.woff') format('woff'),
+		url('./fonts/UnifontLANGDEV.ttf')  format('truetype');
+	font-weight: 400;
+	unicode-range: U+101000-1017FF;
 }
 
 @font-feature-values Junicode {
-  @styleset {
-    insular: 2;
-    high-roman: 4;
-    enlarged: 6;
-  }
+	@styleset {
+		insular: 2;
+		high-roman: 4;
+		enlarged: 6;
+	}
 }
 
 *:root {
-  font-family: Junicode, Cardo, "Iowan Old Style", "Unifont LANGDEV", "Unifont Upper", "Unifont", serif;
-  font-size: large;
-  font-weight: 400;
-  font-synthesis: none;
-  font-variant-numeric: oldstyle-nums;
-  line-height: 1.35;
-  text-align: left;
-  quotes: "“" "”" "‘" "’";
+	font-family: Junicode, Cardo, "Iowan Old Style", "Unifont LANGDEV", "Unifont Upper", "Unifont", serif;
+	font-size: large;
+	font-weight: 400;
+	font-synthesis: none;
+	font-variant-numeric: oldstyle-nums;
+	line-height: 1.35;
+	text-align: left;
+	quotes: "“" "”" "‘" "’";
 
-  @media print {
-    * {
-      color: black;
-      background: white;
-    }
-  }
+	@media print {
+		* {
+			color: black;
+			background: white;
+		}
+	}
 }
 
-*:root:root:root:root:root [hidden] {
-  display: none;
+*:root:root:root:root:root [hidden], table *:empty {
+	display: none;
 }
 
 *[title]:not([title=""]):not(a) {
-  border-bottom: thin currentColor dotted;
-  cursor: help;
+	border-bottom: thin currentColor dotted;
+	cursor: help;
 
-  @supports (text-decoration-style: dotted) {
-      border: none;
-      text-decoration-line: underline;
-      text-decoration-style: dotted;
-  }
+	@supports (text-decoration-style: dotted) {
+		border: none;
+		text-decoration-line: underline;
+		text-decoration-style: dotted;
+	}
 }
 
 *:lang(en) {
-  quotes: "“" "”" "‘" "’";
+	quotes: "“" "”" "‘" "’";
 }
 
 blockquote:lang(en), blockquote *:lang(en) {
-  quotes: "‘" "’" "“" "”";
+	quotes: "‘" "’" "“" "”";
+}
+
+*[role="link"], *[role="button"] {
+	cursor: pointer;
 }
 
 #pulse {
-  margin: 1rem;
-  width: 16rem;
-  line-height: 1.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  animation-duration: 2s;
-  animation-name: pulse;
-  animation-iteration-count: infinite;
+	margin: 1rem;
+	width: 16rem;
+	line-height: 1.5rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	animation-duration: 2s;
+	animation-name: pulse;
+	animation-iteration-count: infinite;
 }
 
 @keyframes pulse {
-  from {
-    font-size: 1rem;
-  }
-  50% {
-    font-size: 1.2rem;
-  }
-  to {
-    font-size: 1rem;
-  }
+	from {
+		font-size: 1rem;
+	}
+	50% {
+		font-size: 1.2rem;
+	}
+	to {
+		font-size: 1rem;
+	}
 }
 
 *.roman {
-  font-variant-alternates: styleset(high-roman);
-  font-feature-settings: "ss04";
+	font-variant-alternates: styleset(high-roman);
+	font-feature-settings: "ss04";
 }
 
 *.noalts {
-  font-variant-alternates: normal;
-  font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
+	font-variant-alternates: normal;
+	font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
 }
 
 /*  PAGE  */
 
 html, body {
-  margin: 0;
-  padding: 0;
-  min-width: 31rem;
-  text-align: center;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+	margin: 0;
+	padding: 0;
+	min-width: 31rem;
+	text-align: center;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
 }
 
 /*  SECTIONING  */
 
 article, section, aside, header, footer, div {
-  display: block;
-  margin: 0;
-  padding: 0;
+	display: block;
+	margin: 0;
+	padding: 0;
 }
 
 article {
-  margin: 1rem 2.5%;
-  border: medium currentColor solid;
-  padding: 1rem 2.5%;
+	margin: 1rem 2.5%;
+	border: medium currentColor solid;
+	padding: 1rem 2.5%;
 }
 
 aside {
-  font-size: medium;
+	font-size: medium;
+	margin: 1em 0;
+	border: none;
+	padding: 0;
 
-  body > & {
-    display: inline-block;
-    margin: 1rem 0 1rem 2.5%;
-    border: thick currentColor solid;
-    padding: 1rem 5%;
-    width: 20%;
-    max-width: 10rem;
-    font-size: medium;
-    vertical-align: top;
-    text-align: left;
-  }
+	&::before, &::after {
+		display: block;
+		margin: .5em auto;
+		border-top: thin currentColor solid;
+		width: 65%;
+		content: "";
+	}
+
+	body > & {
+		display: inline-block;
+		margin: 1rem 0 1rem 2.5%;
+		border: thick currentColor solid;
+		padding: 1rem 5%;
+		width: 20%;
+		max-width: 10rem;
+		font-size: medium;
+		vertical-align: top;
+		text-align: left;
+
+		&::before, &::after {
+			content: none;
+		}
+	}
 }
 
 footer {
-  margin: 1.5em 0 0;
-  border-top: thin currentColor solid;
-  font-size: small;
-  font-variant-alternates: styleset(enlarged);
-  font-feature-settings: "ss06";
-  line-height: 1.5;
+	margin: 1.5em 0 0;
+	border-top: thin currentColor solid;
+	font-size: small;
+	font-variant-alternates: styleset(enlarged);
+	font-feature-settings: "ss06";
+	line-height: 1.5;
 
-  &::before {
-    display: block;
-    margin: 0 0 1.5em;
-    content: "";
-  }
+	&::before {
+		display: block;
+		margin: 0 0 1.5em;
+		content: "";
+	}
 }
 
 footer.signature, blockquote > footer:last-child {
-  border: none;
-  padding: 0;
-  font-size: medium;
-  font-variant-alternates: normal;
-  font-feature-settings: "ss06" off;
-  line-height: inherit;
-  text-align: right;
+	border: none;
+	padding: 0;
+	font-size: medium;
+	font-variant-alternates: normal;
+	font-feature-settings: "ss06" off;
+	line-height: inherit;
+	text-align: right;
 
-  &::before {
-    display: inline;
-    margin: 0;
-    content: "– ";
-  }
+	&::before {
+		display: inline;
+		margin: 0;
+		content: "– ";
+	}
 }
 
 header {
-  position: relative;
-  border: 1rem currentColor solid;
-  text-align: center;
+	position: relative;
+	border: 1rem currentColor solid;
+	text-align: center;
 }
 
 main {
-  display: inline-block;
-  width: 60%;
-  max-width: 28rem;
-  vertical-align: top;
-  text-align: left;
+	display: inline-block;
+	width: 60%;
+	max-width: 28rem;
+	vertical-align: top;
+	text-align: left;
 }
 
 nav {
-  margin: .675em 0;
-  text-align: center;
+	margin: .675em 0;
+	text-align: center;
 
-  header > & {
-    display: inline-block;
-    margin: 0 1rem;
-    line-height: 1.8;
-    vertical-align: middle;
-  }
+	header > & {
+		display: inline-block;
+		margin: 0 1rem;
+		line-height: 1.8;
+		vertical-align: middle;
+	}
 }
 
 /*  TABLES  */
 
 table {
-  table-layout: fixed;
-  margin: .675em auto;
-  width: 100%;
+	table-layout: fixed;
+	margin: .675em auto;
+	width: 100%;
 }
 
 caption, th {
-  &, &[title]:not([title=""]) {
-    font-weight: bold;
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-style: solid;
-  }
+	&, &[title]:not([title=""]) {
+		font-weight: bold;
+		text-align: center;
+		text-decoration: underline;
+		text-decoration-style: solid;
+	}
 }
 
 td {
-  position: relative;
-  border: thin currentColor solid;
-  padding: 0 .8em;
-  z-index: 1;
+	position: relative;
+	border: thin currentColor solid;
+	padding: 0 .8em;
+	z-index: 1;
 }
 
 /*  LISTS  */
 
 ul, ol, dl {
-  margin: .675em 0;
-  padding: 0 1em 0 2em;
-  text-align: left;
+	margin: .675em 0;
+	padding: 0 1em 0 2em;
+	text-align: left;
 
-  & & {
-    margin: 0 -1em 0 -.5em;
-  }
+	& & {
+		margin: 0 -1em 0 -.5em;
+	}
 }
 
 dl {
-  padding: 0;
+	padding: 0;
 
-  & & {
-    margin: 0;
-  }
+	& & {
+		margin: 0;
+	}
 }
 
 ul {
-  list-style-type: circle;
+	list-style-type: circle;
 
-  li & {
-    list-style-type: square;
+	li & {
+		list-style-type: square;
 
-    li & {
-      list-style-type: disc;
+		li & {
+			list-style-type: disc;
 
-      li & {
-        list-style-type: circle;
+			li & {
+				list-style-type: circle;
 
-        li & {
-          list-style-type: square;
-        }
-      }
-    }
-  }
+				li & {
+					list-style-type: square;
+				}
+			}
+		}
+	}
 }
 
 ol {
-  list-style-type: upper-roman;
+	list-style-type: upper-roman;
 
-  li & {
-    list-style-type: decimal-leading-zero;
+	li & {
+		list-style-type: decimal-leading-zero;
 
-    li & {
-      list-style-type: lower-latin;
+		li & {
+			list-style-type: lower-latin;
 
-      li & {
-        list-style-type: lower-greek;
+			li & {
+				list-style-type: lower-greek;
 
-        li & {
-          list-style-type: decimal;
+				li & {
+					list-style-type: decimal;
 
-        }
-      }
-    }
-  }
+				}
+			}
+		}
+	}
 }
 
 dt {
-  font-weight: 700;
-  text-decoration: underline;
+	font-weight: 700;
+	text-decoration: underline;
 
-  dd + & {
-    margin-top: .675em;
-  }
+	dd + & {
+		margin-top: .675em;
+	}
 }
 
 dd {
-  margin: 0;
-  padding-left: 2em;
+	margin: 0;
+	padding-left: 2em;
 }
 
 /*  BLOCK ELEMENTS  */
 
 blockquote {
-  position: relative;
-  margin: 1.35em auto;
-  padding: 0 2em;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  font-style: italic;
+	position: relative;
+	margin: 1.35em auto;
+	padding: 0 2em;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	font-style: italic;
 
-  blockquote & {
-    margin: .675em 0;
-    padding: 0 1em 0 1em;
-    border-left: thick currentColor solid;
-    font-size: medium;
-  }
+	blockquote & {
+		margin: .675em 0;
+		padding: 0 1em 0 1em;
+		border-left: thick currentColor solid;
+		font-size: medium;
+	}
 
-  figure & {
-    font-size: medium;
-    font-variant-alternates: normal;
-    font-feature-settings: "ss06" off;
-  }
+	figure & {
+		font-size: medium;
+		font-variant-alternates: normal;
+		font-feature-settings: "ss06" off;
+	}
 }
 
 figcaption {
-  margin: .675em 0;
-  text-align: center;
-  font-variant-alternates: normal;
-  font-feature-settings: "ss06" off;
+	margin: .675em 0;
+	text-align: center;
+	font-variant-alternates: normal;
+	font-feature-settings: "ss06" off;
 }
 
 figure, iframe, img, svg, video {
-  display: block;
-  margin: auto;
-  border: none;
-  padding: 0;
-  max-width: 100%;
-  font-size: small;
-  font-variant-alternates: styleset(enlarged);
-  font-feature-settings: "ss06";
+	display: block;
+	margin: auto;
+	border: none;
+	padding: 0;
+	max-width: 100%;
+	font-size: small;
+	font-variant-alternates: styleset(enlarged);
+	font-feature-settings: "ss06";
 
-  main & {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-  }
+	main & {
+		width: -webkit-fit-content;
+		width: -moz-fit-content;
+		width: fit-content;
+	}
 }
 
 figure, main figure {
-  margin: 1.35em auto;
+	margin: 1.35em auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  display: block;
-  margin: 0;
-  padding: 0;
-  font-weight: 700;
-  font-variant-alternates: normal;
-  font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-variant-alternates: normal;
+	font-feature-settings: "ss02" off, "ss04" off, "ss06" off;
 
-  article > &:first-child, aside > &:first-child, footer > &:first-child, header > &:first-child {
-    margin-top: 0;
-  }
+	article > &:first-child, aside > &:first-child, footer > &:first-child, header > &:first-child {
+		margin-top: 0;
+	}
 }
 
 h1 {
-  position: relative;
-  margin: .6em auto .4em;
-  width: 6em;
-  font-size: 2.5em;
-  line-height: 1;
-  text-align: inherit;
-  z-index: 100;
+	position: relative;
+	margin: .6em auto .4em;
+	width: 6em;
+	font-size: 2.5em;
+	line-height: 1;
+	text-align: inherit;
+	z-index: 100;
 }
 
 h2 {
-  margin: .45em 0 .675em;
-  font-size: 1.5em;
+	margin: .45em 0 .675em;
+	font-size: 1.5em;
 }
 
 h3 {
-  margin: 1.62em 0 1.08em;
-  font-size: 1.25em;
+	margin: 1.62em 0 1.08em;
+	font-size: 1.25em;
 }
 
 h4 {
-  margin: 1.175em 0 .3em;
-  font-size: 1.15em;
+	margin: 1.175em 0 .3em;
+	font-size: 1.15em;
 }
 
 h5 {
-  margin: .675em 0 0;
-  font-size: 1em;
-  font-variant: small-caps;
+	margin: .675em 0 0;
+	font-size: 1em;
+	font-variant: small-caps;
 
-  &::before {
-    content: " "
-  }
+	&::before {
+		content: " "
+	}
 }
 
 h6 {
-  margin: .3375em 0 0;
-  font-size: 1em;
+	margin: .3375em 0 0;
+	font-size: 1em;
 }
 
 hr {
-  display: block;
-  position: relative;
-  margin: 1.35em 0;
-  border: none;
-  padding: 0;
-  width: 100%;
-  height: 1.35em;
-  background: none;
-  overflow: hidden;
-  text-align: center;
-  white-space: pre;
+	display: block;
+	position: relative;
+	margin: 1.35em 0;
+	border: none;
+	padding: 0;
+	width: 100%;
+	height: 1.35em;
+	background: none;
+	overflow: hidden;
+	text-align: center;
+	white-space: pre;
 
-  &::after {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1.35em;
-    content: "~ ⁂ ~";
-    text-align: center;
-    white-space: pre;
-  }
+	&::after {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1.35em;
+		content: "~ ⁂ ~";
+		text-align: center;
+		white-space: pre;
+	}
 }
 
 img.inline, svg.inline {
-  display: inline-block;
-  margin: 0;
-  padding: .16875em;
-  max-height: .675em;
-  max-width: .675em;
-  vertical-align: middle;
+	display: inline-block;
+	margin: 0;
+	padding: .16875em;
+	max-height: .675em;
+	max-width: .675em;
+	vertical-align: middle;
 }
 
 p {
-  margin: 0;
-  text-align: justify;
-  text-align-last: center;
+	margin: 0;
+	text-align: justify;
+	text-align-last: center;
 
-  & + p {
-    margin-top: .675em;
+	& + p {
+		margin-top: .675em;
 
-    footer & {
-      margin-top: .75em;
-    }
-  }
+		footer & {
+			margin-top: .75em;
+		}
+	}
 
-  li & {
-    margin: .675em 0;
-  }
+	li & {
+		margin: .675em 0;
+	}
 
-  dl & {
-    text-align-last: left;
-  }
+	dl & {
+		text-align-last: left;
+	}
 }
 
 pre {
-  font-family: "Unifont LANGDEV", "Unifont Upper", "Unifont", monospace;
-  margin: .8em 1.175em;
-  font-family: monospace;
-  font-size: .85em;
-  font-weight: 400;
-  line-height: 1;
-  white-space: pre-wrap;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
+	font-family: "Unifont LANGDEV", "Unifont Upper", "Unifont", monospace;
+	margin: .8em 1.175em;
+	font-family: monospace;
+	font-size: .85em;
+	font-weight: 400;
+	line-height: 1;
+	white-space: pre-wrap;
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
 
 svg {
-  color: inherit;
+	color: inherit;
 }
 
 /*  PHRASING  */
 
 a[href] {
-  display: inline;
-  color: inherit;
-  text-decoration: underline;
-  -webkit-text-decoration-style: dashed;
-  text-decoration-style: dashed;
-  -webkit-text-decoration-color: inherit;
-  text-decoration-color: inherit;
-  transition: color .3s;
-  transition: color .3s, -webkit-text-decoration-color .3s;
-  transition: color .3s, text-decoration-color .3s;
+	display: inline;
+	color: inherit;
+	text-decoration: underline;
+	-webkit-text-decoration-style: dashed;
+	text-decoration-style: dashed;
+	-webkit-text-decoration-color: inherit;
+	text-decoration-color: inherit;
+	transition: color .3s;
+	transition: color .3s, -webkit-text-decoration-color .3s;
+	transition: color .3s, text-decoration-color .3s;
 
-  @media print {
-      text-decoration: none;
+	@media print {
+		text-decoration: none;
 
-    &::after {
-      content: " [" attr(href) "]";
-    }
-  }
+		&::after {
+			content: " [" attr(href) "]";
+		}
+	}
 
-  &:hover {
-    -webkit-text-decoration-color: transparent;
-    text-decoration-color: transparent;
-  }
+	&:hover {
+		-webkit-text-decoration-color: transparent;
+		text-decoration-color: transparent;
+	}
 
-  body > header & {
-    display: block;
-    text-decoration: none;
-  }
+	body > header & {
+		display: block;
+		text-decoration: none;
+	}
 
-  body > header > & {
-    display: inline-block;
-    vertical-align: middle;
-  }
+	body > header > & {
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
 
 @supports (text-decoration-style: dotted) {
-  abbr {
-    border: none;
-  }
+	abbr {
+		border: none;
+	}
 }
 
 b {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 cite {
-  font-style: inherit;
+	font-style: inherit;
 }
 
 cite:not(.plain), dfn, em, i {
-  font-style: italic;
+	font-style: italic;
 
-  blockquote & {
-    font-style: normal;
-  }
+	blockquote & {
+		font-style: normal;
+	}
 }
 
 *.noalts, b, cite:not(.plain), dfn, em, i, strong, u {
-  figure &, footer &, small & {
-    font-size: 1.2em;
-    font-variant-alternates: normal;
-    font-feature-settings: "ss06" off;
-    line-height: 1;
-  }
+	figure &, footer &, small & {
+		font-size: 1.2em;
+		font-variant-alternates: normal;
+		font-feature-settings: "ss06" off;
+		line-height: 1;
+	}
 
-  figure blockquote &, figure figcaption &, footer.signature &, blockquote footer:last-child &, h1 &, h2 &, h3 &, h4 &, h5 &, h6 & {
-    font-size: inherit;
-    line-height: inherit;
-  }
+	figure blockquote &, figure figcaption &, footer.signature &, blockquote footer:last-child &, h1 &, h2 &, h3 &, h4 &, h5 &, h6 & {
+		font-size: inherit;
+		line-height: inherit;
+	}
 }
 
 cite {
-  font-variant: small-caps;
+	font-variant: small-caps;
 }
 
 code, kbd, samp {
-  font-size: .85em;
-  font-family: "Unifont LANGDEV", "Unifont Upper", "Unifont", monospace;
-  line-height: 1;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
+	font-size: .85em;
+	font-family: "Unifont LANGDEV", "Unifont Upper", "Unifont", monospace;
+	line-height: 1;
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
 
 small {
-  font-size: small;
-  font-variant-alternates: styleset(enlarged);
-  font-feature-settings: "ss06";
+	font-size: small;
+	font-variant-alternates: styleset(enlarged);
+	font-feature-settings: "ss06";
 }
 
 strong {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 sup {
-  font-size: small;
-  font-variant-numeric: normal;
-  text-transform: uppercase;
-  line-height: 0;
+	font-size: small;
+	font-variant-numeric: normal;
+	text-transform: uppercase;
+	line-height: 0;
 }
 
 u {
-  font-variant: small-caps;
-  text-decoration: none;
+	font-variant: small-caps;
+	text-decoration: none;
 }

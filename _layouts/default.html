@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+	{%- assign nLeg_class = "" -%}
+	{%- assign night_class = "" -%}
+	{%- assign modern_class = "" -%}
+	{%- case page.styles.day -%}
+		{%- when "nLeg" -%}
+			{%- assign nLeg_class = "day-style" -%}
+		{%- when "night" %}
+			{%- assign night_class = "day-style" -%}
+		{%- when "modern" %}
+			{%- assign modern_class = "day-style" -%}
+	{%- endcase -%}
+	{%- case page.styles.night -%}
+		{%- when "nLeg" -%}
+			{%- capture nLeg_class %}{{ nLeg_class | append: " night-style" }}{% endcapture -%}
+		{%- when "night" %}
+			{%- capture night_class %}{{ night_class | append: " night-style" }}{% endcapture -%}
+		{%- when "modern" -%}
+			{%- capture modern_class %}{{ modern_class | append: " night-style" }}{% endcapture -%}
+	{%- endcase -%}
+	<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=670">
+	<link rel="stylesheet" href="/src/style.css">
+	<link id="default-style" rel="stylesheet" title="Default Style" href="/src/themes/nLeg.css">
+	<link class="{{ nLeg_class | strip }}" rel="stylesheet alternate" title="New Legendary" href="/src/themes/nLeg.css">
+	<link class="{{ night_class | strip }}" rel="stylesheet alternate" title="Night" href="/src/themes/night.css">
+	<link class="{{ modern_class | strip }}" rel="stylesheet alternate" title="Modern" href="/src/themes/modern.css">
 
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=670">
-    <link rel="stylesheet" href="/src/style.css">
-    <link id="default-style" rel="stylesheet" title="Default Style" href="/src/themes/nLeg.css">
-    <link id="nLeg-style" rel="stylesheet alternate" title="New Legendary" href="/src/themes/nLeg.css">
-    <link id="night-style" rel="stylesheet alternate" title="Night" href="/src/themes/night.css">
-    <link id="modern-style" rel="stylesheet alternate" title="Modern" href="/src/themes/modern.css">
-
-    <header>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about/">About</a>
-            <a href="/tools/">T<span style="margin-right: -.122em;"></span>ꝏls</a>
-        </nav><!--  No whitespace allowed!
-     --><a href="/">
-            <h1>{{ site.shorttile | default: site.title | default: site.github.repository_name }}</h1>
-            <p id="pulse">{% for splash in site.splashes %}
-                <span {% if forloop.index == 1 %}      {% else %}hidden{% endif %}>{{ splash }}</span>{% endfor %}
-            </p>
-        </a><!--  No whitespace allowed!
-     --><nav>
-            <a href="/languages/">Languages</a>
-            <a href="/scripts/">Scripts</a>
-            <a href="http://langdev.xyz/dictionary/">Dictionary</a>
-        </nav>
-    </header>
+	<header>
+		<nav>
+			<a href="/">Home</a>
+			<a href="/about/">About</a>
+			<a href="/tools/">Tools</a>
+		</nav><!--  No whitespace allowed!
+		--><a href="/">
+			<h1>{{ site.shorttile | default: site.title | default: site.github.repository_name }}</h1>
+			<p id="pulse">{% for splash in site.splashes %}
+				<span {% if forloop.index == 1 %}      {% else %}hidden{% endif %}>{{ splash }}</span>{% endfor %}
+			</p>
+		</a><!--  No whitespace allowed!
+		--><nav>
+			<a href="/languages/">Languages</a>
+			<a href="/scripts/">Scripts</a>
+			<br> <!--  Placeholder  -->
+		</nav>
+	</header>
 
 {{ content }}
-    <script type="text/javascript" src="/src/script.js" async></script>
+	<script type="text/javascript" src="/src/script.js" async></script>
 
 </html>
